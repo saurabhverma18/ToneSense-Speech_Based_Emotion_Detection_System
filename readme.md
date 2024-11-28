@@ -1,65 +1,82 @@
-# Speech Emotion Recognition ![Python](https://img.shields.io/badge/python-v3.8+-blue.svg) ![version](https://img.shields.io/badge/version-1.0.0-green)
+# ToneSense: Speech Based Emotion Detection System
 
-Web-application based on ML model for recognition of emotion for selected audio file. You can try it on [streamlit sharing platform](https://share.streamlit.io/cybermaryver/speech-emotion-webapp/app.py) or on [amazon server](http://34.217.207.244:8501/)
-![img](images/smileyfacesboxes.jpg)
+**ToneSense** is a speech-based emotion detection system that analyzes audio input to identify emotions from speech using machine learning techniques. The system processes audio features such as Mel Frequency Cepstral Coefficients (MFCCs) and Mel Spectrograms, and uses a Convolutional Neural Network (CNN) for emotion classification. It is deployed as a **Streamlit** application for an interactive web interface.
 
-## Description
-This project is a part of the final **Data Mining** project for **ITC Fellow Program 2020**. 
+## Table of Contents
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
 
-Datasets used in this project
-* Crowd-sourced Emotional Mutimodal Actors Dataset (**Crema-D**)
-* Ryerson Audio-Visual Database of Emotional Speech and Song (**Ravdess**)
-* Surrey Audio-Visual Expressed Emotion (**Savee**)
-* Toronto emotional speech set (**Tess**)
+## Features
+- **Emotion Detection**: Predicts emotions such as happy, sad, angry, neutral, etc., from audio data.
+- **Data Augmentation**: Enhances the dataset through techniques like noise addition, pitch shifting, and time-stretching.
+- **Feature Extraction**: Utilizes Mel Frequency Cepstral Coefficients (MFCCs) and Mel Spectrograms for extracting meaningful features from audio.
+- **CNN Model**: A Convolutional Neural Network (CNN) is trained for emotion classification.
+- **Streamlit Interface**: A simple, interactive web interface built with Streamlit for real-time emotion prediction.
 
-Digital signal processing is an emerging field of research in this era. Recently, many researchers have developed a various approaches in this area for SER from over the past decade.
-
-Typically, the SER task is divided into two main sections: features selection and classification. The discriminative features selection and classification method that correctly recognizes the emotional state of the speaker in this domain is a challenging task
-
-*Our project pipeline*
-![img](images/schema.png)
-
-Nowadays, mostly researchers utilize deep learning techniques for SER using Mel-scale filter bank speech spectrogram as an input feature. A spectrogram is a 2-D representation of speech signals which is widely used in convolutional neural networks (CNNs) for extracting the salient and discriminative features. Similarly, we can utilize the transfer learning strategies for SER using speech spectrograms passing through pre-trained CNNs models like VGG, DenseNet or Alex-Net. 
-
-Mel-Frequency Cepstral Coefficients, which are a representation of the short-term power spectrum of a sound by transforming the audio signal, are also considered to be an important feature for SER.
-
-The Mel scale is important because it better approximates human-based perception of sound as opposed to linear scales. In filter-source theory, "the source is the vocal cords and the filter represents the vocal tract." The length and shape of the vocal tract determine how sound is outputted from a human and the cepstrum can describe the filter. 
-
-In our project we have combined two models: pretrained DenseNet for mel-spectrograms and CNN for mfccs. 
-You can find a more detailed description, EDA and ML models [**here**](https://github.com/talbaram3192/Emotion_Recognition)
+## Technologies Used
+- **Python**: Core programming language for the system.
+- **Librosa**: For audio feature extraction (MFCCs and Mel Spectrograms).
+- **TensorFlow/Keras**: For training the CNN model.
+- **Streamlit**: For building the interactive web interface.
+- **NumPy**: For numerical operations.
+- **Matplotlib**: For data visualization.
+- **scikit-learn**: For machine learning utilities and metrics.
 
 ## Installation
+To set up **ToneSense** on your local machine, follow these steps:
 
-It is recommended to use the provided `requirements.txt` file to set your virtual environment.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/saurabhverma18/ToneSense-Speech_Based_Emotion_Detection_System.git
+    cd ToneSense-Speech_Based_Emotion_Detection_System
+    ```
 
-To install the app run this commands
+2. **Create a virtual environment (optional but recommended):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
 
-```sh
-!git clone https://github.com/CyberMaryVer/speech-emotion-webapp.git
-!cd speech-emotion-webapp
-!python -m virtualenv your_venv
-!your_venv/Scripts/activate
-!pip install -r requirements.txt
-```
-After that you can run the app
-```sh
-!streamlit run app.py
-```
+3. **Install required dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Download the dataset** (if necessary) and make sure it’s placed in the appropriate folder.
+
 ## Usage
-Example of an execution:
+1. **Preprocess Data**: Run the script to preprocess the audio files and extract features like MFCCs or Mel Spectrograms.
+    ```bash
+    python preprocess_data.py
+    ```
 
-You can try the app [here](https://share.streamlit.io/cybermaryver/speech-emotion-webapp/app.py)
-![Alt Text](demo2.gif)
+2. **Train the Model**: Train the emotion detection model using the prepared dataset.
+    ```bash
+    python train_model.py
+    ```
 
+3. **Run the Streamlit App**: Start the Streamlit app to deploy the model and interact with it through a web interface.
+    ```bash
+    streamlit run app.py
+    ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+    After running the above command, open your browser and go to `http://localhost:8501` to use the app.
 
-## Team
+4. **Predict Emotion**: Upload an audio file through the Streamlit interface, and the system will predict the emotion based on the speech.
 
-[![CyberMaryVer](https://avatars3.githubusercontent.com/u/66170525?s=40&v=4)](https://github.com/CyberMaryVer) | [![Tal](https://avatars.githubusercontent.com/u/57663531?s=40&v=4)](https://github.com/talbaram3192) | [![Asher](https://avatars.githubusercontent.com/u/73426116?s=40&v=4)](https://github.com/asher1112)
---- | --- | ---
-[Maria Startseva](https://github.com/CyberMaryVer) | [Tal Baram](https://github.com/talbaram3192) | [Asher](https://github.com/asher1112)
-
-## License
-**Speech Emotion Recognition Project** is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+## Folder Structure
+```bash
+ToneSense-Speech_Based_Emotion_Detection_System/
+│
+├── app.py                # Streamlit application for interaction
+├── preprocess_data.py    # Data preprocessing and feature extraction script
+├── train_model.py        # Model training script
+├── requirements.txt      # Python dependencies
+├── dataset/              # Folder containing the audio dataset
+│   └── <dataset_files>   # Audio files (e.g., .wav files)
+├── model/                # Folder to save the trained model
+├── utils/                # Helper functions for data and model handling
+└── README.md             # This README file
